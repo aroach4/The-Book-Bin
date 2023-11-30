@@ -2,6 +2,8 @@ const booksUrl = "http://localhost:5275/api/books"
 
 let myBooks;
 
+//roach test
+
 function handleOnLoad() {
     console.log('handle on load called')
     let html=`

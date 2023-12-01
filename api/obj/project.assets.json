@@ -7789,19 +7789,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\robmc\\.nuget\\packages\\": {}
+    "/Users/aidanroach/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\robmc\\Misc MIS321 Class things\\The-Book-Bin\\api\\api.csproj",
+      "projectUniqueName": "/Users/aidanroach/Desktop/MIS331/backendTBB/api/api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\robmc\\Misc MIS321 Class things\\The-Book-Bin\\api\\api.csproj",
-      "packagesPath": "C:\\Users\\robmc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\robmc\\Misc MIS321 Class things\\The-Book-Bin\\api\\obj\\",
+      "projectPath": "/Users/aidanroach/Desktop/MIS331/backendTBB/api/api.csproj",
+      "packagesPath": "/Users/aidanroach/.nuget/packages/",
+      "outputPath": "/Users/aidanroach/Desktop/MIS331/backendTBB/api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\robmc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/aidanroach/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -7861,7 +7861,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/7.0.100/libexec/sdk/7.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

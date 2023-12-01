@@ -37,20 +37,29 @@ namespace api.Controllers
         }
         // POST: api/Orders
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Order myOrder)
         {
+            
+            OrderUtility utility = new OrderUtility();
+            utility.AddOrder(myOrder);
+            System.Console.WriteLine(myOrder);
         }
 
         // PUT: api/Orders/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+       public void Put(int id, [FromBody] string completionDate)
         {
+            OrderUtility utility = new OrderUtility();
+            utility.updateOrder(id, completionDate);
         }
 
         // DELETE: api/Orders/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+      public void Delete(int id)
         {
+            System.Console.WriteLine(id + " Order Delete");
+            OrderUtility utility = new OrderUtility();
+            utility.DeleteOrder(id);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace api
                 System.Console.WriteLine($"{rdr.GetString(0)} {rdr.GetString(1)}");
                 // newAdmin.id = rdr.GetInt32(0);
                 // newAdmin.activityType = rdr.GetString(1);
-                myAdmins.Add(new Admin(){id = rdr.GetInt32(0), firstName = rdr.GetString(1), lastName = rdr.GetString(2), email = rdr.GetString(3)});
+                myAdmins.Add(new Admin(){id = rdr.GetInt32(0), username = rdr.GetString(1), password = rdr.GetString(2)});
             }
             con.Close();
             return myAdmins;

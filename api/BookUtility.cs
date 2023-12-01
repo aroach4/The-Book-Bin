@@ -22,7 +22,7 @@ namespace api
                 System.Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)}");
                 // newBook.id = rdr.GetInt32(0);
                 // newBook.activityType = rdr.GetString(1);
-                myBooks.Add(new Book(){id = rdr.GetInt32(0), title = rdr.GetString(1), author = rdr.GetString(2), pageCount = rdr.GetInt32(3), bookType = rdr.GetString(4), genre = rdr.GetString(5), condition = rdr.GetString(5), price = rdr.GetDouble(6)});
+                myBooks.Add(new Book(){id = rdr.GetInt32(0), title = rdr.GetString(1), author = rdr.GetString(2), pageCount = rdr.GetInt32(3), bookType = rdr.GetString(4), genre = rdr.GetString(5), condition = rdr.GetString(7), price = rdr.GetDouble(6), deleted = rdr.GetBoolean(8)});
             }
             con.Close();
             return myBooks;

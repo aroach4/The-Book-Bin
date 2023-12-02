@@ -28,6 +28,8 @@ function handleOnLoad() {
             </div>
         </div>
         <div id="tablebody"></div>    
+        
+   
     `
    // <button onclick="loadTradeForm()">Trade a Book</button>
    // <button onclick="loadCart()">Cart</button>
@@ -623,11 +625,23 @@ async function handleOrderCompletion(index)
 //TODO ------------------ADMIN PORTAL FUNCTIONS-------------------------//
 function loadAdminPortal() {
     console.log('In loadAdminPortal()');
+
+    
     let html =`
+    <div class="alert alert-info" role="alert">
+      1. Shaliyah is working on Inventory page
+     
+    </div>
+
+     <div class="alert alert-info" role="alert">
+          2. Still needed: a) Reports page which contains Sales Revenue Report graph b) Transaction History page which shows all completed orders
+      </div>
     <button onclick="loadTransactionHistory()">Transaction History</button>
     <button onclick="loadReportsPage()">Reports</button>
     <button onclick="loadBookInventory()">Inventory</button>
     <button onclick="loadMainPage()">Home</button>`
+
+    
    
     document.getElementById('tablebody').innerHTML = html;
 }
@@ -717,18 +731,22 @@ function displayInvTable(bookData) {
     
 
 
-    <p>
-  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-    View Total Inventory
-  </button>
-</p>
-<div style="min-height: 120px;">
-  <div class="collapse collapse-horizontal" id="collapseWidthExample">
-    <div class="card card-body" style="width: 300px;">
-    Total Number of Books in Inventory: ${count}
-    </div>
+  <div class="alert alert-secondary" role="alert">
+     Total Number of Books in Inventory: ${count}
   </div>
-</div>`
+   
+
+  <div class="alert alert-secondary" role="alert">
+    Avg book price: $$
+  </div>
+
+  <div class="alert alert-danger" role="alert">
+   ATTENTION: To do on this page: 
+    1) Add functionality to CRUD buttons: ('ADD', Edit Delete)
+    2) Sort functions: by page count, Sort alphabetcally by..title,author,genre,etc 
+    3) Remove second header
+</div>
+`
 //      html = `
 //     <div
 //     <button type="button"  class="btn btn-primary btn-lg" onclick="sortTable('pageCount', 'asc')">Sort by Page Count (Low to High)</button>

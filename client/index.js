@@ -691,6 +691,8 @@ function displayInvTable(bookData) {
         <th>Genre</th>
         <th>Price</th>
         <th>Condition</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
     </tr>       
     </div> `
     var count = 0
@@ -706,16 +708,33 @@ function displayInvTable(bookData) {
             <td>${book.genre}</td>
             <td>${book.price}</td>
             <td>${book.condition}</td>
+            <td><button type="button" class="btn active" data-bs-toggle="button" onclick="" </button></td>
+            <td><button class = "btn btn-danger" onclick="">Delete</button></td>
+            
         </tr>`
     })
-    html +=`</table>
-    Total Number of Books in Inventory: ${count}`
-    //  html = `
-    // <div
-    // <button type="button"  class="btn btn-primary btn-lg" onclick="sortTable('pageCount', 'asc')">Sort by Page Count (Low to High)</button>
-    //         <button type="button"  class="btn btn-primary btn-lg" onclick="sortTable('pageCount', 'desc')">Sort by Page Count (High to Low)</button>
-   // </div>
-    //     `
+    html +=`
+    
+
+
+    <p>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+    View Total Inventory
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-horizontal" id="collapseWidthExample">
+    <div class="card card-body" style="width: 300px;">
+    Total Number of Books in Inventory: ${count}
+    </div>
+  </div>
+</div>`
+//      html = `
+//     <div
+//     <button type="button"  class="btn btn-primary btn-lg" onclick="sortTable('pageCount', 'asc')">Sort by Page Count (Low to High)</button>
+//             <button type="button"  class="btn btn-primary btn-lg" onclick="sortTable('pageCount', 'desc')">Sort by Page Count (High to Low)</button>
+//    </div>
+//         `
 
     document.getElementById('tablebody').innerHTML = html
 }
@@ -745,6 +764,8 @@ function sortTable(column, order) {
         });
 }
 
+//sort 
+//  myActivities.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 
 

@@ -2,35 +2,71 @@ const booksUrl = "http://localhost:5275/api/books"
 
 const ordersUrl = "http://localhost:5275/api/orders"
 
+const adminsUrl = "http://localhost:5275/api/admins"
+
+
 let myBooks;
 
 let cart;
 //roach test
 
+// function handleOnLoad() {
+//     console.log('handle on load called')
+//     loadMainPage()
+// }
+
+//johnson edit move the heading to index.html
 function handleOnLoad() {
     console.log('handle on load called')
     let html=`
         <div class="p-2 mb-3 bg-body-tertiary rounded-3">
-        <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Tuscaloosa Book Bin</h1>
-        <p class="col-md-8 fs-4">Tuscaloosa's first choice in book purchasing!</p>
-        <button onclick="loadMainPage()">Home</button>
-        <button onclick="loadTradeForm()">Trade a Book</button>
-        <button onclick="loadCart()">Cart</button>
-        <button onclick="loadAdminLogin()">Admin Login</button>
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">Tuscaloosa Book Bin</h1>
+                <p class="col-md-8 fs-4">Tuscaloosa's first choice in book purchasing!</p>
+                <button onclick="loadMainPage()">Home</button>
+                <button onclick="loadAdminPortal()">Admin Login</button>        
+            </div>
         </div>
-        </div>
-        <div id="tablebody"></div>
-    
+        <div id="tablebody"></div>    
     `
-    
+   // <button onclick="loadTradeForm()">Trade a Book</button>
+   // <button onclick="loadCart()">Cart</button>
+    //todo  <button onclick="loadAdminLogin()">Admin Login</button>
+
     document.getElementById('app').innerHTML=html
     loadMainPage()
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function loadMainPage() {
-    let html = `</table>`
-    document.getElementById('tablebody').innerHTML = html
+    console.log("In loadMainPage()")
+    // let html = `</table>`
+    // document.getElementById('tablebody').innerHTML = html
     createBookTable()
 }
 
@@ -49,14 +85,16 @@ async function createBookTable() {
 // Below is an example, it makes a two column table with as many rows as there is relevant data.
 // Likely just pull the header building out and change the row building to fill in cards.
 // Shaliyah should have more information on making cards.
+
+//just displays the book
 function displayBookTable(myBooks) {
     let html =`
     <table class="table table-striped">
         <tr>
             <th>Book</th>
             <th>Price</th>
-            <th></th>
-            <th></th>
+            <th>Action</th>
+            <th>Action</th>
         </tr>`
     myBooks.forEach(function(book){
         
@@ -69,13 +107,23 @@ function displayBookTable(myBooks) {
                     <td><button onclick="displayBookInfo('${book.id}')">More Info on ${book.title}</button></td>
                     <td><button onclick="loadBuyPage(${book.id})" >Buy this book</button></td>               
                 </tr>` 
-            }
-            
-        
+            }  
     })
     html +=`</table>`
     document.getElementById('tablebody').innerHTML = html
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // passes in the book's url as "bookInfo" to draw from in the following page building.
 
@@ -204,9 +252,11 @@ async function loadBuyPage(bookid) {
     document.getElementById('tablebody').innerHTML = html
 }
 
-async function handleOrderAdd(bookid){
+//SIMILAR TO ADD ADMIN
+async function handleOrderAdd(bookid)
+{
     console.log(bookid)
-    let customerEmail = document.getElementById('customerEmail').value;
+    let customerEmail = document.getElementById('customerEmail').value; //GET FROM FORM ON LINE 198
     let shippingAddress = document.getElementById('shippingAddress').value;
     let response = await fetch(booksUrl+"/"+bookid);
     let data = await response.json();
@@ -314,6 +364,8 @@ async function loadCart() {
         console.error('Error fetching cart details:', error);
     }
 }
+
+
 async function checkCartOwner(myOrders){
     console.log(myOrders)
     let html = `<form onsubmit="return false" class="mt-4">
@@ -535,142 +587,235 @@ async function handleOrderCompletion(index)
     
 }
 
-function loadAdminLogin() {
-    let html =`
-        <form action="/action_page.php">
-        <div class="form-group">
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="email">
-        </div>
-        <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd">
-        </div>
-        <div class="checkbox">
-        <label><input type="checkbox"> Remember me</label>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>`
-    html +=`</table>`
-    document.getElementById('tablebody').innerHTML = html
-    // Checking for correct credentials, probably a better/correct way to do this though.
-    if (aname=="CorrectName" && pword=="CorrectPassword") {
-        loadAdminPortal()
-    }
-}
+// function loadAdminLogin() {
+//     let html =
+//     `  <form action="/action_page.php">
+//         <div class="form-group">
+//             <label for="email">Email address:</label>
+//             <input type="email" class="form-control" id="email">
+//         </div>
 
+//         <div class="form-group">
+//             <label for="pwd">Password:</label>
+//             <input type="password" class="form-control" id="pwd">
+//         </div>
+
+//         <div class="checkbox">
+//           <label><input type="checkbox"> Remember me</label>
+//         </div>
+//         <button type="submit" class="btn btn-default">Submit</button>
+//     </form>`
+//     html +=`</table>`
+//     document.getElementById('tablebody').innerHTML = html
+//     // Checking for correct credentials, probably a better/correct way to do this though.
+//     if (email=="CorrectName" && pword=="CorrectPassword") {
+//         loadAdminPortal()
+//     }
+// }
+
+// //! test: Original email
+// {/* <div class="form-group">
+// <label for="email">Email address:</label>
+// <input type="email" class="form-control" id="email">
+// </div> */}
+
+
+//TODO ------------------ADMIN PORTAL FUNCTIONS-------------------------//
 function loadAdminPortal() {
+    console.log('In loadAdminPortal()');
     let html =`
     <button onclick="loadTransactionHistory()">Transaction History</button>
     <button onclick="loadReportsPage()">Reports</button>
     <button onclick="loadBookInventory()">Inventory</button>
     <button onclick="loadMainPage()">Home</button>`
-    html +=`</table>`
-    document.getElementById('tablebody').innerHTML = html
+   
+    document.getElementById('tablebody').innerHTML = html;
 }
 
-function loadTransactionHistory() {
-    createTransactionTable()
-    let html =`
-    <button onclick="loadAdminPortal()">Return to Admin Portal</button>`
-    html +=`</table>`
-    document.getElementById('tablebody').innerHTML = html
-}
 
-function createTransactionTable() {
-    // API link will have to be updated to our actual API link
-    const url = 'API link placeholder'
-    fetch(url).then(function(response){
-        console.log(response)
-        return response.json()
-    }).then(function(json){
-        console.log(json)
-        // display the table
-        displayTransactionTable(json.results)
-    })
-    .catch(function(error) {
-        console.error('Error fetching data:', error)
-    })
-}
-
-function displayTransactionTable(transactionData) {
-    let html =`
-    <table class="table table-striped">
-        <tr>
-            <th>Book Purchased or Traded</th>
-            <th>Amount Paid</th>
-            <th>Date of Transaction</th>
-            <th>In-Store or Online</th>
-        </tr>`
-    transactionData.forEach(function(transaction){
-        html += `
-        <tr>
-            <td>${transaction.book}</td>
-            <td>${transaction.paid}</td>
-            <td>${transaction.date}</td>
-            <td>${transaction.type}</td>
-        </tr>`
-    })
-    html +=`</table>`
-    document.getElementById('tablebody').innerHTML = html
-}
-
-function loadReportsPage() {
-    let html =`
-    <button onclick="loadAdminPortal()">Return to Admin Portal</button>`
-    html +=`</table>`
-    document.getElementById('tablebody').innerHTML = html
-}
 
 function loadBookInventory() {
-    let html =`
-    <button onclick="loadAdminPortal()">Return to Admin Portal</button>`
-    html +=`</table>`
-    document.getElementById('tablebody').innerHTML = html
-    createInvTable()
+    console.log('In loadBookInventory()');
+    //!ADD A LIST OF ALL INVENTORY ON HAND IN THE BOOKS TABLE
+    //routes back to homepage
+    let html =`<button onclick="loadAdminPortal()">Return to Admin Portal</button>`
+    // html +=`</table>`
+    document.getElementById('tablebody').innerHTML = html;
+   createInvTable();
 }
 
-function createInvTable() {
-    // API link will have to be updated to our actual API link
-    const url = 'API link placeholder'
+//fetchs the book data
+function createInvTable()
+ {
+  
+    console.log('IN createInvTable');
+    
+    const url =  booksUrl  //! BOOKS API
+
     fetch(url).then(function(response){
         console.log(response)
         return response.json()
-    }).then(function(json){
+    })
+    .then(function(json){
         console.log(json)
         // display the table
-        displayInvTable(json.results)
+        displayInvTable(json)
     })
     .catch(function(error) {
         console.error('Error fetching data:', error)
     })
 }
 
+//displays the final tabl table for inventory display
 function displayInvTable(bookData) {
+
+    console.log('In displayInvTable'); //!error checking
+
+    if (!bookData || !Array.isArray(bookData)) {
+        // Handle the case where bookData is undefined or not an array
+        console.error('Invalid or missing data for book inventory');
+        return;
+    }
+
+
     let html =`
     <table class="table table-striped">
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Page Count</th>
-            <th>Price</th>
-        </tr>`
+    <div 
+   
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Page Count</th>
+        <th>Type</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Condition</th>
+    </tr>       
+    </div> `
     var count = 0
     bookData.forEach(function(book){
         count++
         html += `
         <tr>
+            <td>${book.id}</td>
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.pageCount}</td>
+            <td>${book.bookType}</td>
+            <td>${book.genre}</td>
             <td>${book.price}</td>
+            <td>${book.condition}</td>
         </tr>`
     })
     html +=`</table>
-    'Total Number of Books in Inventory: ${count}'`
+    Total Number of Books in Inventory: ${count}`
+    //  html = `
+    // <div
+    // <button type="button"  class="btn btn-primary btn-lg" onclick="sortTable('pageCount', 'asc')">Sort by Page Count (Low to High)</button>
+    //         <button type="button"  class="btn btn-primary btn-lg" onclick="sortTable('pageCount', 'desc')">Sort by Page Count (High to Low)</button>
+   // </div>
+    //     `
+
     document.getElementById('tablebody').innerHTML = html
 }
 
+// Add this function to your JavaScript
+function sortTable(column, order) {
+    console.log("sortTable(column, order)")
+    const url = booksUrl; // Assuming booksUrl is defined in your script
+
+    fetch(url)
+        .then(response => response.json())
+        .then(json => {
+            // Sort the array based on the specified column and order
+            const sortedBooks = json.sort((a, b) => {
+                if (order === 'asc') {
+                    return a[column] - b[column];
+                } else {
+                    return b[column] - a[column];
+                }
+            });
+
+            // Display the sorted table
+            displayInvTable(sortedBooks);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function loadTransactionHistory() 
+// {
+//     createTransactionTable()
+//     let html =`
+//     <button onclick="loadAdminPortal()">Return to Admin Portal</button>`
+//     html +=`</table>`
+//     document.getElementById('tablebody').innerHTML = html
+// }
+
+// function createTransactionTable() {
+//     // API link will have to be updated to our actual API link
+
+//     const url = "http://localhost:5275/api/orders";//this will be orders
+//     fetch(url).then(function(response){
+//         console.log(response)
+//         return response.json()
+//     }).then(function(json){
+//         console.log(json)
+//         // display the table
+//         displayTransactionTable(json.results)
+//     })
+//     .catch(function(error) {
+//         console.error('Error fetching data:', error)
+//     })
+// }
+
+// function displayTransactionTable(transactionData) {
+//     let html =`
+//     <table class="table table-striped">
+//         <tr>
+//             <th>Book Purchased or Traded</th>
+//             <th>Amount Paid</th>
+//             <th>Date of Transaction</th>
+//             <th>In-Store or Online</th>
+//         </tr>`
+//     transactionData.forEach(function(transaction){
+//         html += `
+//         <tr>
+//             <td>${transaction.book}</td>
+//             <td>${transaction.paid}</td>
+//             <td>${transaction.date}</td>
+//             <td>${transaction.type}</td>
+//         </tr>`
+//     })
+//     html +=`</table>`
+//     document.getElementById('tablebody').innerHTML = html
+// }
+
+// function loadReportsPage() {
+//     //! ADD SALES REVENUE GRAPHS
+//     let html =`
+//     <button onclick="loadAdminPortal()">Return to Admin Portal</button>`
+//     html +=`</table>`
+//     document.getElementById('tablebody').innerHTML = html
+// }
 
 
 function boughtBook() {

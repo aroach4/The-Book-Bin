@@ -15,6 +15,7 @@ namespace api.Controllers
     public class BooksController : ControllerBase
     {
         // GET: api/Books
+        // "Hey, give me the list of all books you know about!"
         [HttpGet]
         public List<Book> Get()
         {
@@ -23,6 +24,7 @@ namespace api.Controllers
         }
 
         // GET: api/Books/5
+        //  "Tell me about the book with ID 5!"
         [HttpGet("{id}", Name = "GetBook")]
         public Book Get(int id)
         {
@@ -37,6 +39,9 @@ namespace api.Controllers
         }
 
         // POST: api/Books
+        //  "Hey, I've got a new book! Can you add it to your list?"
+        /*You provide all the details about the new book (title, author, etc.).
+The system uses its helper to add this new book to its storage (like putting a new book on a shelf).*/
         [HttpPost]
         public void Post([FromBody] Book myBook)
         {
@@ -47,6 +52,9 @@ namespace api.Controllers
         }
 
         // PUT: api/Books/5
+       // "I want to change something about the book with ID 5!"
+       /*The system (your API) has a helper (the BookUtility class) that knows how to get all the books from the storage (like a database).
+It sends back a list of all the books it has.*/
         [HttpPut("{id}")]
          public void Put(int id, [FromBody] Book myBook)
         {
@@ -55,6 +63,9 @@ namespace api.Controllers
         }
 
         // DELETE: api/Books/5
+        //"Remove the book with ID 5 from your list."
+        /*
+        */
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

@@ -911,3 +911,21 @@ function displayBookTradeTable(bookData) {
     html +=`</table>`
     document.getElementById('tablebody').innerHTML = html
 }
+
+
+
+// delete book entry
+
+async function handleActivityDelete(index)
+{
+        await fetch(url + "/"+index, {
+            method:"DELETE",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+
+    await handleOnLoad();
+    populateTable()
+    
+}

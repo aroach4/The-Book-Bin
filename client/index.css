@@ -1,32 +1,114 @@
 body {
     background-color: #ffffff;
 }
-
-/* .card {
-    background-color: rgb(53, 47, 47)(110, 103, 103);
-  } */
-
-
-.sorting-buttons button { color: black;
-    background-color: #C0C0C0;
-    margin-right: 5px; /* Adjust as needed for spacing between buttons */
-    margin-bottom: 5px; /* Adjust as needed for spacing between buttons */
-    background-color: #C0C0C0; /* Light grey background color */
+/* Center the sort buttons */
+.sorting-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping if buttons exceed container width */
 }
 
-  .bookshelf {
+/* Style for sort buttons */
+.sorting-buttons button {
+    margin: 5px; /* Adjust margin as needed */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    background-color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sorting-buttons button:hover {
+    background-color: #555;
+}
+
+
+.bookshelf {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 20px; /* Adjust the margin as needed */
+    margin: 20px;
 }
 
 .my-card {
-    background-color: #faf8f8; /* Light grey background color */
-    width: 200px; /* Set the width of each card */
-    margin: 10px; /* Adjust the margin as needed */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
 }
 
-.btn {
-    background-color: #C0C0C0;
+.my-card img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.my-card .card-body {
+    padding-top: 10px;
+}
+
+.my-card h5 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.my-card p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.my-card button {
+    margin-top: 10px;
+}
+
+/* Unified button style for .btn class and container-fluid buttons */
+.btn,
+.container-fluid button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: white; /* Set the text color to white */
+    background-color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.btn:hover,
+.container-fluid button:hover {
+    background-color: rgb(90, 91, 93)
+}
+
+
+    .custom-banner {
+        background-color: rgb(121, 7, 29);
+        color: white; /* Set text color to white */
+    }
+
+
+
+
+/* Add this to style the admin portal buttons */
+#tablebody button {
+    margin-top: 10px; /* Adjust as needed for spacing between buttons */
+    padding: 4px 8px; /* Adjust padding for button size */
+    font-size: 18px; /* Adjust font size */
+    border: none;
+    color: white; /* Text color */
+    background-color: #514d4d; /* Button background color */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add smooth transition effect */
+}
+
+/* Add a hover effect for the admin portal buttons */
+#tablebody button:hover {
+    background-color: #555; /* Adjust hover background color */
 }

@@ -1,0 +1,32 @@
+body {
+    background-color: #ffffff;
+}
+
+/* .card {
+    background-color: rgb(53, 47, 47)(110, 103, 103);
+  } */
+
+
+.sorting-buttons button { color: black;
+    background-color: #C0C0C0;
+    margin-right: 5px; /* Adjust as needed for spacing between buttons */
+    margin-bottom: 5px; /* Adjust as needed for spacing between buttons */
+    background-color: #C0C0C0; /* Light grey background color */
+}
+
+  .bookshelf {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px; /* Adjust the margin as needed */
+}
+
+.my-card {
+    background-color: #faf8f8; /* Light grey background color */
+    width: 200px; /* Set the width of each card */
+    margin: 10px; /* Adjust the margin as needed */
+}
+
+.btn {
+    background-color: #C0C0C0;
+}

@@ -27,7 +27,6 @@ namespace api
             con.Close();
             return myOrders;
         }
-
         public void AddOrder(Order myOrder)
         {
             ConnectionString db = new ConnectionString();
@@ -55,7 +54,7 @@ namespace api
             con.Close();
         }
 
-        public void updateOrder(int id, string completionDate){
+    public void updateOrder(int id, string completionDate){
                 int activityId = id; // Replace with the ID of the book to update.
                 
                 
@@ -75,7 +74,7 @@ namespace api
                 con.Close();
         }
 
-           public void DeleteOrder(int id){
+          public void DeleteOrder(int id){
                int activityId = id;
                 bool complete = true; // This variable should represent the 'completed' status
 

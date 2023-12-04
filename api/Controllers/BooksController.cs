@@ -14,7 +14,7 @@ namespace api.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        // GET: api/Books
+       // GET: api/Books
         [HttpGet]
         public List<Book> Get()
         {
@@ -22,7 +22,7 @@ namespace api.Controllers
             return utility.GetAllBooks();
         }
 
-        // GET: api/Books/5
+       // GET: api/Books/5
         [HttpGet("{id}", Name = "GetBook")]
         public Book Get(int id)
         {
@@ -36,23 +36,25 @@ namespace api.Controllers
             return new Book();
         }
 
-        // POST: api/Books
+         // POST: api/Books
         [HttpPost]
         public void Post([FromBody] Book myBook)
         {
             
-            BookUtility utility = new BookUtility();
-            utility.AddBook(myBook);
-            System.Console.WriteLine(myBook);
+            // BookUtility utility = new BookUtility();
+            // utility.AddBook(myBook);
+            // System.Console.WriteLine(myBook);
         }
 
-        // PUT: api/Books/5
+
+      // PUT: api/Books/5
         [HttpPut("{id}")]
          public void Put(int id, [FromBody] Book myBook)
         {
-            BookUtility utility = new BookUtility();
-            utility.EditBook(id, myBook);
+            // BookUtility utility = new BookUtility();
+            // utility.EditBook(id, myBook);
         }
+
 
         // DELETE: api/Books/5
         [HttpDelete("{id}")]

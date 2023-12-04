@@ -4,8 +4,6 @@ using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
 
-namespace api
-{
     public class BookUtility
     {
         public List<Book> GetAllBooks()
@@ -49,25 +47,31 @@ namespace api
             con.Close();
         }
 
-        public void EditBook(int id, Book myBook){
-                int activityId = id; // Replace with the ID of the book to update.
-                
-               
-                // // Create the UPDATE SQL statement.
-                // ConnectionString db = new ConnectionString();
-                // using var con = new MySqlConnection(db.cs);
-                // con.Open();
-                // string stm = "UPDATE books SET pinned = @pin WHERE id = @id";
-                // using var cmd = new MySqlCommand(stm, con);
+public void EditBook(int id, Book myBook)
+{
+    int bookId = id; // Replace with the ID of the book to update.
 
-                // // Set parameters for the SQL statement.
-                // cmd.Parameters.AddWithValue("@pin", pinned);
-                // cmd.Parameters.AddWithValue("@id", activityId);
+    // Create the UPDATE SQL statement.
+    ConnectionString db = new ConnectionString();
+    using var con = new MySqlConnection(db.cs);
+    con.Open();
+    string stm = "UPDATE books SET title = @title, author = @author, pageCount = @pageCount, bookType = @bookType, genre = @genre, price = @price, condition = @condition WHERE id = @id";
+    using var cmd = new MySqlCommand(stm, con);
 
-                // // Execute the SQL statement to update the book.
-                // int rowsAffected = cmd.ExecuteNonQuery();
-                // con.Close();
-        }
+    // Set parameters for the SQL statement.
+    cmd.Parameters.AddWithValue("@title", myBook.title);
+    cmd.Parameters.AddWithValue("@author", myBook.author);
+    cmd.Parameters.AddWithValue("@pageCount", myBook.pageCount);
+    cmd.Parameters.AddWithValue("@bookType", myBook.bookType);
+    cmd.Parameters.AddWithValue("@genre", myBook.genre);
+    cmd.Parameters.AddWithValue("@price", myBook.price);
+    cmd.Parameters.AddWithValue("@condition", myBook.condition);
+    cmd.Parameters.AddWithValue("@id", bookId);
+
+    // Execute the SQL statement to update the book.
+    int rowsAffected = cmd.ExecuteNonQuery();
+    con.Close();
+}
 
         public void DeleteBook(int id){
                 int bookId = id; 
@@ -91,4 +95,3 @@ namespace api
 
 
     }
-}

@@ -31,7 +31,7 @@ function handleOnLoad() {
         <button onclick="loadMainPage()">Home</button>
         <button onclick="loadCart()">Cart</button>
         <button onclick="inputAdminCredentials()">Admin Login</button>
-        <button onclick="loadAboutPage()">About Us</button>
+       
     </div>
 </div>
 <div id="tablebody"></div>
@@ -40,6 +40,7 @@ function handleOnLoad() {
     document.getElementById('app').innerHTML=html
     loadMainPage()
 }
+
 
 
 function loadMainPage() {
@@ -69,14 +70,15 @@ function displayBookTable(myBooks)
         // <div class="row row-cols-1 row-cols-md-3 g-4">`;
     let html = `
     <div class="sorting-buttons">
-        <button onclick="sortHomePage('pageCount', 'asc')">Sort by Page Count (Asc)</button>
-        <button onclick="sortHomePage('pageCount', 'desc')">Sort by Count (Desc)</button>
+        <button onclick="sortHomePage('author', 'asc')">Sort by Author (Asc)</button>
+        <button onclick="sortHomePage('author', 'desc')">Sort by Author (Desc)</button>
     
-        <button onclick="sortHomePage('genre', 'asc')">Sort by Genre (Asc)</button>
-        <button onclick="sortHomePage('genre', 'desc')">Sort by Genre (Desc)</button>
+        <button onclick="sortHomePage('price', 'asc')">Sort by Price (Asc)</button>
+        <button onclick="sortHomePage('price', 'desc')">Sort by Price (Desc)</button>
     
-        <button onclick="sortHomePage('price', 'asc')">Sort by Price (Low to High)</button>
-        <button onclick="sortHomePage('price', 'desc')">Sort by Price (High to Low)</button>
+        <button onclick="sortHomePage('title', 'asc')">Sort by Title (Asc)</button>
+        <button onclick="sortHomePage('title', 'desc')">Sort by Title (Desc)</button>
+    
      </div>
 
     <div class="row row-cols-1 row-cols-md-4 g-4 bookshelf">`;
@@ -96,8 +98,8 @@ function displayBookTable(myBooks)
                         <h5 class="card-title">${book.title}</h5>
                         <p class="card-text">${book.author}</p>
                       
-                        <p class="card-text">Price: ${book.price}</p>
-                        <button onclick="displayBookInfo('${book.id}')" class="btn btn-primary">More Info</button>
+                        <p class="card-text">Price: $${book.price}</p>
+                        <button onclick="displayBookInfo('${book.id}')" class="btn btn-primary">View Book</button>
                         <button onclick="loadBuyPage(${book.id})" class="btn btn-success">Buy</button>
                     </div>
                 </div>
@@ -793,12 +795,6 @@ function displayTransactionHistory(orderData) {
   
 </div>
 `
-//      html = `
-//     <div
-//     <button type="button"  class="btn btn-primary btn-lg" onclick="sortTable('pageCount', 'asc')">Sort by Page Count (Low to High)</button>
-//             <button type="button"  class="btn btn-primary btn-lg" onclick="sortTable('pageCount', 'desc')">Sort by Page Count (High to Low)</button>
-//    </div>
-//         `
 
     document.getElementById('tablebody').innerHTML = html
 }
@@ -1140,46 +1136,21 @@ function loadBookInventory() {
 
 
 
+async function createInvTable() {
+    try {
+        const response = await fetch(booksUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-// //fetchs the book data
-// function createInvTable()
-//  {
-  
-//     console.log('IN createInvTable');
-    
-//     const url =  booksUrl  //! BOOKS API
-
-//     fetch(url).then(function(response){
-//         console.log(response)
-//         return response.json()
-//     })
-//     .then(function(json){
-//         console.log(json)
-//         // display the table
-//         displayInvTable(json)
-//     })
-//     .catch(function(error) {
-//         console.error('Error fetching data:', error)
-//     })
-// }
-
-function createInvTable()
- {
-  
-    console.log('IN createInvTable');
-    
-    fetch(booksUrl).then(function(response){
-        console.log(response)
-        return response.json()
-    })
-    .then(function(json){
-        console.log(json)
-        // display the table
-        displayInvTable(json)
-    })
-    .catch(function(error) {
-        console.error('Error fetching data:', error)
-    })
+        const json = await response.json();
+        console.log(json);
+        
+        // Call the display function with the fetched data
+        displayInvTable(json);
+    } catch (error) {
+        console.error('Error fetching or processing data:', error);
+    }
 }
 
 
@@ -1407,4 +1378,3 @@ function sortHomePage(column, order) {
             console.error('Error fetching data:', error);
         });
 }
-

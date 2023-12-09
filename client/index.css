@@ -31,6 +31,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 20px;
+    background-color: #f5f5f5; 
 }
 
 .my-card {
@@ -69,8 +70,7 @@ body {
 }
 
 /* Unified button style for .btn class and container-fluid buttons */
-.btn,
-.container-fluid button {
+.btn, .container-fluid button {
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -112,3 +112,4 @@ body {
 #tablebody button:hover {
     background-color: #555; /* Adjust hover background color */
 }
+
